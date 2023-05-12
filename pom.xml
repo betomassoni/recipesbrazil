@@ -19,7 +19,7 @@
         <module>rest-api</module>
         <module>domain</module>
         <module>application</module>
-        <module>repository</module>
+        <module>persistence</module>
         <module>service</module>
         <module>core</module>
     </modules>
