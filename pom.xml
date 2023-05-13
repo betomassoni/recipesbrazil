@@ -16,12 +16,12 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>rest-api</module>
-        <module>domain</module>
-        <module>application</module>
-        <module>persistence</module>
-        <module>service</module>
-        <module>core</module>
+        <module>recipesbrazil-rest-api</module>
+        <module>recipesbrazil-domain</module>
+        <module>recipesbrazil-application</module>
+        <module>recipesbrazil-persistence</module>
+        <module>recipesbrazil-service</module>
+        <module>recipesbrazil-core</module>
     </modules>
 
     <properties>
@@ -90,7 +90,7 @@
                 <artifactId>maven-checkstyle-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
-                    <configLocation>config/checkstyle.xml</configLocation>
+                    <configLocation>config/checkstyle-google.xml</configLocation>
                     <encoding>UTF-8</encoding>
                     <consoleOutput>true</consoleOutput>
                     <failsOnError>true</failsOnError>
