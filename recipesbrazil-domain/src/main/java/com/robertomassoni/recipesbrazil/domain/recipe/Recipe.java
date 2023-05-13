@@ -1,7 +1,6 @@
 package com.robertomassoni.recipesbrazil.domain.recipe;
 
 import com.robertomassoni.recipesbrazil.domain.enums.DietType;
-
 import java.util.List;
 
 public class Recipe {
