@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class IngredientEntityMapperTest {
 
-    private IngredientEntityMapper mapper = IngredientEntityMapper.INSTANCE;
+    private final IngredientEntityMapper mapper = IngredientEntityMapper.INSTANCE;
 
     @Test
     void shouldMapIngredientDomainToEntity() {

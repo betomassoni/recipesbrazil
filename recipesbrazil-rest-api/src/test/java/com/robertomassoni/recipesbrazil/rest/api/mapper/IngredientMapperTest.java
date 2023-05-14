@@ -10,7 +10,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class IngredientMapperTest {
 
-    private IngredientMapper mapper = IngredientMapper.INSTANCE;
+    private final IngredientMapper mapper = IngredientMapper.INSTANCE;
 
     @Test
     void shouldMapIngredientDomainToResponse() {

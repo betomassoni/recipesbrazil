@@ -8,7 +8,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class CommonsMapperTest {
 
-    private CommonsMapper mapper = new CommonsMapper();
+    private final CommonsMapper mapper = new CommonsMapper();
 
     @Test
     public void shoudParseStringToByte() {
