@@ -1,4 +1,4 @@
-package com.robertomassoni.recipesbrazil.infraestructure.configuration;
+package com.robertomassoni.recipesbrazil.infrastructure.configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;

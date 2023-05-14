@@ -22,7 +22,7 @@
         <module>recipesbrazil-persistence</module>
         <module>recipesbrazil-service</module>
         <module>recipesbrazil-core</module>
-        <module>recipesbrazil-infraestructure</module>
+        <module>recipesbrazil-infrastructure</module>
     </modules>
 
     <properties>
@@ -143,7 +143,7 @@
                         <exclude>**/core/**</exclude>
                         <exclude>**/core/**</exclude>
                         <exclude>**/infrastructure/**</exclude>
-                        <exclude>**/infrastructure/**</exclude>
+                        <exclude>**/persistence/entity/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
