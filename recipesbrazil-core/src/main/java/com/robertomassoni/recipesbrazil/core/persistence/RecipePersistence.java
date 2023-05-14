@@ -7,4 +7,6 @@ public interface RecipePersistence {
     Recipe save(final Recipe source);
 
     boolean existsByTitle(final String title);
+
+    void delete(final Long recipeId);
 }

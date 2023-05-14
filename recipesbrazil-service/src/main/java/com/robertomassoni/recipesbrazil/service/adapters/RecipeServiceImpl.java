@@ -21,4 +21,9 @@ public class RecipeServiceImpl implements RecipeService {
         }
         return recipePersistence.save(source);
     }
+
+    @Override
+    public void delete(Long recipeId) {
+        recipePersistence.delete(recipeId);
+    }
 }

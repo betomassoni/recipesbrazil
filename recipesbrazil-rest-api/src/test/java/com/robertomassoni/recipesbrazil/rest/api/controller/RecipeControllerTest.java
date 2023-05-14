@@ -92,6 +92,25 @@ public class RecipeControllerTest {
         assertThat(actualRequest.getIngredients().size()).isEqualTo(expectedRecipe.getBody().getIngredients().size());
     }
 
+    @Test
+    public void shouldUpdateRecipe() {
+        final var actualRequest = RecipeRequestMock.create();
+        when(service.save(any())).thenReturn(RecipeMock.create());
 
-    // TODO exceptions test
+        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.update(actualRequest.getId(), actualRequest);
+
+        verify(service, times(1)).save(any());
+        assertThat(expectedRecipe).isNotNull();
+    }
+
+    @Test
+    public void shouldDeleteRecipe() {
+        final var actualRequest = RecipeRequestMock.create();
+        when(service.save(any())).thenReturn(RecipeMock.create());
+
+        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.delete(actualRequest.getId());
+
+        verify(service, times(1)).delete(any());
+        assertThat(expectedRecipe).isNotNull();
+    }
 }

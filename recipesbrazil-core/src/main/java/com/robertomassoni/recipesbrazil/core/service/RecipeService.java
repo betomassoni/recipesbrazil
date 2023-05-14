@@ -4,5 +4,7 @@ import com.robertomassoni.recipesbrazil.domain.recipe.Recipe;
 
 public interface RecipeService {
 
-    Recipe save(Recipe source);
+    Recipe save(final Recipe source);
+
+    void delete(final Long recipeId);
 }
