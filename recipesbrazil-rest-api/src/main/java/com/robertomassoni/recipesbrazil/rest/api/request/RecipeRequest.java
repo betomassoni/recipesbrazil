@@ -1,6 +1,5 @@
-package com.robertomassoni.recipesbrazil.domain.recipe;
+package com.robertomassoni.recipesbrazil.rest.api.request;
 
-import com.robertomassoni.recipesbrazil.domain.enums.DietType;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,18 +8,18 @@ import lombok.With;
 
 import java.util.List;
 
+@With
 @Getter
 @Setter
-@With
 @AllArgsConstructor
 @NoArgsConstructor
-public class Recipe {
+public class RecipeRequest {
     private Long id;
     private String title;
     private String description;
-    private List<Ingredient> ingredients;
+    private List<IngredientRequest> ingredients;
     private String instructions;
     private Integer preparationTimeInMinutes;
     private Integer numberOfServings;
-    private DietType dietType;
+    private String dietType;
 }

@@ -60,6 +60,11 @@
             <artifactId>mapstruct</artifactId>
             <version>${org.mapstruct.version}</version>
         </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -122,6 +127,25 @@
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.8</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/Application.*</exclude>
+                        <exclude>**/enum/**</exclude>
+                        <exclude>**/model/**</exclude>
+                        <exclude>**/exceptions/**</exclude>
+                        <exclude>**/test/**</exclude>
+                        <exclude>**/mapper/**/*Impl.java</exclude>
+                        <exclude>**/mapper/*Impl.java</exclude>
+                        <exclude>**/generated-sources/**</exclude>
+                        <exclude>**/generated-test-sources/**</exclude>
+
+                        <exclude>**/domain/**</exclude>
+                        <exclude>**/core/**</exclude>
+                        <exclude>**/core/**</exclude>
+                        <exclude>**/infrastructure/**</exclude>
+                        <exclude>**/infrastructure/**</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
