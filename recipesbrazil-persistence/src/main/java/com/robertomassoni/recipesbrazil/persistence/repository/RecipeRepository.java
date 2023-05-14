@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface RecipeRepository extends JpaRepository<RecipeEntity, Integer> {
 
+    boolean existsByTitle(final String title);
 }

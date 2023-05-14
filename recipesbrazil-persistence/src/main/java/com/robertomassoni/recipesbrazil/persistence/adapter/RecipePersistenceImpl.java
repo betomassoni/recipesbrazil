@@ -19,4 +19,9 @@ public class RecipePersistenceImpl implements RecipePersistence {
         final var result = repository.save(entity);
         return RecipeEntityMapper.INSTANCE.mapFrom(result);
     }
+
+    @Override
+    public boolean existsByTitle(final String title) {
+        return repository.existsByTitle(title);
+    }
 }

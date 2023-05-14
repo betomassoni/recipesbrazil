@@ -35,4 +35,15 @@ public class RecipePersistenceImplTest {
         verify(repository, times(1)).save(any());
         assertThat(expectedRecipe).isNotNull();
     }
+
+    @Test
+    public void shouldReturnTrueWhenRecipeTitleAlreadyExists() {
+        final var actualTitle = RecipeMock.create().getTitle();
+        when(repository.existsByTitle(any())).thenReturn(true);
+
+        final var expectedValue = persistence.existsByTitle(actualTitle);
+
+        verify(repository, times(1)).existsByTitle(any());
+        assertThat(expectedValue).isTrue();
+    }
 }
