@@ -17,8 +17,8 @@ public interface RecipeRepository extends JpaRepository<RecipeEntity, Integer> {
             + "WHERE (r.diet_type = :diet_type OR :diet_type IS NULL) "
             + "AND (r.number_of_servings = :number_of_servings OR :number_of_servings IS NULL) "
             + "AND (:instructions IS NULL OR r.instructions LIKE %:instructions%) "
-            + "AND (EXISTS (SELECT * FROM ingredient i WHERE i.recipe_id = r.id AND i.description LIKE %:include_ingredient%) OR :include_ingredient IS NULL) "
-            + "AND (NOT EXISTS (SELECT * FROM ingredient i WHERE i.recipe_id = r.id AND i.description LIKE %:exclude_ingredient%) OR :exclude_ingredient IS NULL)",
+            + "AND EXISTS (SELECT * FROM ingredient i WHERE i.recipe_id = r.id AND (:include_ingredient IS NULL OR i.description LIKE %:include_ingredient%)) "
+            + "AND NOT EXISTS (SELECT * FROM ingredient i WHERE i.recipe_id = r.id AND i.description LIKE %:exclude_ingredient%)",
             nativeQuery = true)
     List<RecipeEntity> findAllAndFilter(@Param("diet_type") String dietType,
                                         @Param("number_of_servings") String numberOfServings,
