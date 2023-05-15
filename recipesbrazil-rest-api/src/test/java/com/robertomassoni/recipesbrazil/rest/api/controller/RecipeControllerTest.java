@@ -99,7 +99,7 @@ public class RecipeControllerTest {
         final var actualRequest = RecipeRequestMock.create();
         when(service.save(any())).thenReturn(RecipeMock.create());
 
-        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.update(actualRequest.getId(), actualRequest);
+        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.update(1L, actualRequest);
 
         verify(service, times(1)).save(any());
         assertThat(expectedRecipe).isNotNull();
@@ -107,10 +107,9 @@ public class RecipeControllerTest {
 
     @Test
     public void shouldDeleteRecipe() {
-        final var actualRequest = RecipeRequestMock.create();
         when(service.save(any())).thenReturn(RecipeMock.create());
 
-        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.delete(actualRequest.getId());
+        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.delete(1L);
 
         verify(service, times(1)).delete(any());
         assertThat(expectedRecipe).isNotNull();

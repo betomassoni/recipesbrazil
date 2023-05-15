@@ -3,9 +3,12 @@ package com.robertomassoni.recipesbrazil.service.adapters;
 import com.robertomassoni.recipesbrazil.core.exception.ResourceAlreadyExistsException;
 import com.robertomassoni.recipesbrazil.core.persistence.RecipePersistence;
 import com.robertomassoni.recipesbrazil.core.service.RecipeService;
+import com.robertomassoni.recipesbrazil.domain.filter.RecipeFilter;
 import mock.domain.RecipeMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -50,4 +53,24 @@ public class RecipeServiceImplTest {
         verify(persistence, times(1)).existsByTitle(any());
         verify(persistence, never()).save(any());
     }
+
+    @Test
+    public void shouldDeleteRecipe() {
+        service.delete(1L);
+
+        verify(persistence, times(1)).delete(any());
+    }
+
+    @Test
+    public void shouldFindAllRecipes() {
+        final var filter = new RecipeFilter()
+                .withDietType("VEGETARIAN");
+        when(persistence.findAll(any())).thenReturn(Arrays.asList(RecipeMock.create(), RecipeMock.create()));
+
+        final var expectedRecipes = service.findAllAndFilter(filter);
+
+        verify(persistence, times(1)).findAll(any());
+        assertThat(expectedRecipes.size()).isEqualTo(2);
+    }
+
 }

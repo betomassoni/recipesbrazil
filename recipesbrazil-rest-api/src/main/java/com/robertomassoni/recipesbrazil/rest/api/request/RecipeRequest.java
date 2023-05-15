@@ -39,7 +39,7 @@ public class RecipeRequest {
     private Integer numberOfServings;
 
     @NotEmpty(message = "Field 'diet_type' is required")
-    @ValueOfEnum(enumClass = DietType.class, message = "Must be a valid diet_type (PLANT_BASED, VEGAN, VEGETERIAN or NONE)")
+    @ValueOfEnum(enumClass = DietType.class, message = "Must be a valid diet_type (PLANT_BASED, VEGAN, VEGETARIAN or NONE)")
     @JsonProperty("diet_type")
     private String dietType;
 }
