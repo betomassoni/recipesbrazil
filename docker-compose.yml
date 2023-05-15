@@ -2,13 +2,36 @@ version: "2.1"
 
 services:
   mysql:
-    container_name: mysql
-    image: mysql
+    image: mysql:8.0.33
+    container_name: mysql-docker-container
     restart: always
     ports:
       - "8035:3306"
     environment:
-      MYSQL_ROOT_PASSWORD: "admin"
+      MYSQL_ROOT_PASSWORD: "1234"
       MYSQL_DATABASE: "recipesbrazil_db"
       MYSQL_USER: "admin"
       MYSQL_PASSWORD: "admin"
+    networks:
+      - web
+
+  app:
+    image: robertomassoni/recipesbrazil
+    build:
+      context: .
+#    restart: always
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      APP_DATABASE_URL: jdbc:mysql://mysql-docker-container:8035/recipesbrazil_db
+      APP_DATABASE_USERNAME: admin
+      APP_DATABASE_PASSWORD: admin
+    ports:
+      - "8080:8080"
+    networks:
+      - web
+    depends_on:
+      - mysql
+
+networks:
+  web:
+    driver: bridge
