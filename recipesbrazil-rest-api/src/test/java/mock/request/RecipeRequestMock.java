@@ -15,7 +15,6 @@ public class RecipeRequestMock {
 
     public static RecipeRequest create() {
         return new RecipeRequest()
-                .withId(1L)
                 .withTitle(TITLE)
                 .withDescription(DESCRIPTION)
                 .withNumberOfServings(4)

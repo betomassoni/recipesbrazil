@@ -4,6 +4,7 @@ import com.robertomassoni.recipesbrazil.core.service.RecipeService;
 import com.robertomassoni.recipesbrazil.domain.filter.RecipeFilter;
 import com.robertomassoni.recipesbrazil.rest.api.mapper.RecipeMapper;
 import com.robertomassoni.recipesbrazil.rest.api.request.RecipeRequest;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -27,14 +28,14 @@ public class RecipeController {
     private RecipeService service;
 
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody final RecipeRequest request) {
+    public ResponseEntity<?> create(@Valid @RequestBody final RecipeRequest request) {
         final var recipe = RecipeMapper.INSTANCE.mapFrom(request);
         final var result = service.save(recipe);
         return ResponseEntity.status(CREATED).body(RecipeMapper.INSTANCE.mapFrom(result));
     }
 
     @PutMapping("/{recipe_id}")
-    public ResponseEntity<?> update(@PathVariable(name = "recipe_id") final Long recipeId, @RequestBody final RecipeRequest request) {
+    public ResponseEntity<?> update(@PathVariable(name = "recipe_id") final Long recipeId, @Valid @RequestBody final RecipeRequest request) {
         final var recipe = RecipeMapper.INSTANCE.mapFrom(request).withId(recipeId);
         final var result = service.save(recipe);
         return ResponseEntity.status(OK).body(RecipeMapper.INSTANCE.mapFrom(result));
