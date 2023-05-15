@@ -22,6 +22,10 @@ public class RecipeServiceImpl implements RecipeService {
         if (recipePersistence.existsByTitle(source.getTitle())) {
             throw new ResourceAlreadyExistsException(String.format(RECIPE_ALREADY_EXISTS_MESSAGE, source.getTitle()));
         }
+
+        if (recipePersistence.existsByTitle(source.getTitle())) {
+            throw new ResourceAlreadyExistsException(String.format(RECIPE_ALREADY_EXISTS_MESSAGE, source.getTitle()));
+        }
         return recipePersistence.save(source);
     }
 
