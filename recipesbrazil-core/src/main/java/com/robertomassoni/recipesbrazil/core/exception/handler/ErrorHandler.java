@@ -24,9 +24,6 @@ public class ErrorHandler extends ResponseEntityExceptionHandler {
     public ResponseEntity<ApiError> handleApiException(final Exception ex) {
         final var httpStatus = ((ApiException) ex).getHttpStatus();
         final var message = Strings.isNotEmpty(ex.getMessage()) ? ex.getMessage() : API_ERROR_MESSAGE;
-        final var test= new ApiError(httpStatus, message);
-        //return new ResponseEntity(new ApiError(httpStatus, message), httpStatus);
-        return new ResponseEntity(test, httpStatus);
-
+        return new ResponseEntity(new ApiError(httpStatus, message), httpStatus);
     }
 }

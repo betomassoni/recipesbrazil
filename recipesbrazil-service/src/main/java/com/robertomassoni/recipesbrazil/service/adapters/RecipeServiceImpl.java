@@ -3,9 +3,12 @@ package com.robertomassoni.recipesbrazil.service.adapters;
 import com.robertomassoni.recipesbrazil.core.exception.ResourceAlreadyExistsException;
 import com.robertomassoni.recipesbrazil.core.persistence.RecipePersistence;
 import com.robertomassoni.recipesbrazil.core.service.RecipeService;
+import com.robertomassoni.recipesbrazil.domain.filter.RecipeFilter;
 import com.robertomassoni.recipesbrazil.domain.recipe.Recipe;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 @AllArgsConstructor
 @Component
@@ -25,5 +28,10 @@ public class RecipeServiceImpl implements RecipeService {
     @Override
     public void delete(Long recipeId) {
         recipePersistence.delete(recipeId);
+    }
+
+    @Override
+    public List<Recipe> findAllAndFilter(final RecipeFilter filter) {
+        return recipePersistence.findAll(filter);
     }
 }

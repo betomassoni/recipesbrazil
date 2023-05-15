@@ -1,11 +1,14 @@
 package com.robertomassoni.recipesbrazil.persistence.adapter;
 
 import com.robertomassoni.recipesbrazil.core.persistence.RecipePersistence;
+import com.robertomassoni.recipesbrazil.domain.filter.RecipeFilter;
 import com.robertomassoni.recipesbrazil.persistence.repository.RecipeRepository;
 import mock.domain.RecipeMock;
 import mock.entity.RecipeEntityMock;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
@@ -28,11 +31,11 @@ public class RecipePersistenceImplTest {
     @Test
     public void shouldSaveRecipe() {
         final var actualDomain = RecipeMock.create();
-        when(repository.save(any())).thenReturn(RecipeEntityMock.create());
+        when(repository.saveAndFlush(any())).thenReturn(RecipeEntityMock.create());
 
         final var expectedRecipe = persistence.save(actualDomain);
 
-        verify(repository, times(1)).save(any());
+        verify(repository, times(1)).saveAndFlush(any());
         assertThat(expectedRecipe).isNotNull();
     }
 
@@ -45,5 +48,15 @@ public class RecipePersistenceImplTest {
 
         verify(repository, times(1)).existsByTitle(any());
         assertThat(expectedValue).isTrue();
+    }
+
+    @Test
+    public void shouldGetRecipe() {
+        when(repository.findAllAndFilter(any(), any(), any(), any(), any())).thenReturn(Arrays.asList(RecipeEntityMock.create(), RecipeEntityMock.create()));
+
+        final var expectedValue = persistence.findAll(new RecipeFilter());
+
+        verify(repository, times(1)).findAllAndFilter(any(), any(), any(), any(), any());
+        assertThat(expectedValue).isNotNull();
     }
 }

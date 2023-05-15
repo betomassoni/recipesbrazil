@@ -8,6 +8,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
@@ -111,6 +113,16 @@ public class RecipeControllerTest {
         final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.delete(actualRequest.getId());
 
         verify(service, times(1)).delete(any());
+        assertThat(expectedRecipe).isNotNull();
+    }
+
+    @Test
+    public void shouldGetRecipe() {
+        when(service.findAllAndFilter(any())).thenReturn(Arrays.asList(RecipeMock.create(), RecipeMock.create()));
+
+        final var expectedRecipe = (ResponseEntity<RecipeResponse>) controller.get(null, null, null, null, null);
+
+        verify(service, times(1)).findAllAndFilter(any());
         assertThat(expectedRecipe).isNotNull();
     }
 }

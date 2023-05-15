@@ -6,6 +6,8 @@ import com.robertomassoni.recipesbrazil.rest.api.response.RecipeResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper(uses = {IngredientMapper.class})
 public interface RecipeMapper {
     RecipeMapper INSTANCE = Mappers.getMapper(RecipeMapper.class);
@@ -13,4 +15,6 @@ public interface RecipeMapper {
     Recipe mapFrom(final RecipeRequest source);
 
     RecipeResponse mapFrom(final Recipe source);
+
+    List<RecipeResponse> mapFrom(final List<Recipe> source);
 }
