@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "398205e6-e379-4383-93ee-e7e45b3cff8e",
+		"name": "RecipesBrazil_API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Lettuce Salad\",\n    \"description\": \"this is a recipe description\",\n    \"ingredients\": [\n        {\n            \"description\": \"this is an ingredient a lettuce\"\n        },\n        {\n            \"description\": \"this is an ingredient tomato description\"\n        }        \n    ],\n    \"instructions\": \"this is the instructions\",\n    \"preparation_time_in_minutes\": 10,\n    \"number_of_servings\": 2,\n    \"diet_type\": \"PLANT_BASED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recipes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recipes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"Lettuce Salad\",\n    \"description\": \"this is a recipe description\",\n    \"ingredients\": [\n        {\n            \"description\": \"this is an ingredient a lettuce\"\n        },\n        {\n            \"description\": \"this is an ingredient tomato description\"\n        }        \n    ],\n    \"instructions\": \"this is the instructions\",\n    \"preparation_time_in_minutes\": 10,\n    \"number_of_servings\": 2,\n    \"diet_type\": \"PLANT_BASED\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recipes/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recipes",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recipes/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recipes",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/v1/recipes?diet_type=VEGETARIAN&number_of_servings=4&include_ingredient=tomato&exclude_ingredient=tomato&instructions=string",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"recipes"
+					],
+					"query": [
+						{
+							"key": "diet_type",
+							"value": "VEGETARIAN"
+						},
+						{
+							"key": "number_of_servings",
+							"value": "4"
+						},
+						{
+							"key": "include_ingredient",
+							"value": "tomato"
+						},
+						{
+							"key": "exclude_ingredient",
+							"value": "tomato"
+						},
+						{
+							"key": "instructions",
+							"value": "string"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
