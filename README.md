@@ -37,6 +37,12 @@ http://localhost:8080/swagger-ui/index.html
 http://localhost:8080/v3/api-docs
 ````
 
+## How to run the application 
+Clone this repository and on the terminal, go to the root directory and run the following commands:
+````
+mvn clean package
+docker compose up
+````
 
 ## Used frameworks and tools
 - Spring Boot

@@ -19,10 +19,10 @@ services:
     image: robertomassoni/recipesbrazil
     build:
       context: .
-#    restart: always
+    restart: on-failure
     environment:
       SPRING_PROFILES_ACTIVE: docker
-      APP_DATABASE_URL: jdbc:mysql://mysql-docker-container:8035/recipesbrazil_db
+      APP_DATABASE_URL: jdbc:mysql://mysql-docker-container:3306/recipesbrazil_db
       APP_DATABASE_USERNAME: admin
       APP_DATABASE_PASSWORD: admin
     ports:
